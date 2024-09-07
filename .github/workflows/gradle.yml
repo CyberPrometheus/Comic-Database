@@ -11,6 +11,15 @@ jobs:
           java-version: 21
           distribution: 'adopt'
           cache: gradle
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            gradle-${{ runner.os }}-
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v3
       - name: Build with Gradle
