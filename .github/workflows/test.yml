@@ -1,4 +1,4 @@
-name: backend_CI
+name: backend_test
 
 on: [pull_request]
 
