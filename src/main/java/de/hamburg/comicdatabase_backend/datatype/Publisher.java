@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @Data
 
 public class Publisher {
