@@ -69,7 +69,7 @@ public class ComicRepositoryTest {
     @Test
     public void comicWithIssues(){
         Optional<Comic> comicDb = comicRepository.findComicByIdWithIssues(comic.getId());
-        assertTrue(comicDb.get().getSet().contains(usComic));
+        assertTrue(comicDb.get().getComicIssues().contains(usComic));
     }
 
     @Test
@@ -82,7 +82,7 @@ public class ComicRepositoryTest {
     public void dynamicDeleting(){
         Optional<Comic> comicDb = comicRepository.findComicByIdWithIssues(comic.getId());
         comicDb.get().removeMedium(usComic);
-        assertFalse(comicDb.get().getSet().contains(usComic));
+        assertFalse(comicDb.get().getComicIssues().contains(usComic));
         comicRepository.saveAndFlush(comicDb.get());
         Optional<ComicIssue> usComic_DB = usComicRepository.findUS_ComicByIdWithIssues(usComic.getId());
         assertFalse(usComic_DB.get().getComicSet().contains(comic));
